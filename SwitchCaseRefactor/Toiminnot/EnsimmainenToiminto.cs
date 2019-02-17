@@ -27,6 +27,33 @@ namespace SwitchCaseRefactor.Toiminnot
                 {
                     case "1":
                         Console.WriteLine("Valinta 01.01");
+                        string kadunnimi;
+                        string postinumero;
+                        string postitoimipaikka;
+
+                        do
+                        {
+                            Console.Write("Anna kadunnimi: ");
+                            // Pvm = int.Parse(Console.ReadLine());
+                            kadunnimi = Console.ReadLine();
+                        } while (kadunnimi == "");
+
+                        do
+                        {
+                            Console.Write("Anna postinumero: ");
+                            postinumero = Console.ReadLine();
+                        } while (postinumero == "");
+
+                        do
+                        {
+                            Console.Write("Anna postitoimipaikka: ");
+                            postitoimipaikka = Console.ReadLine();
+                        } while (postitoimipaikka == "");
+
+                        Console.WriteLine(kadunnimi);
+                        Console.WriteLine(postinumero);
+                        Console.WriteLine(postitoimipaikka);
+
                         break;
                     case "2":
                         Console.WriteLine("Valinta 01.02");
