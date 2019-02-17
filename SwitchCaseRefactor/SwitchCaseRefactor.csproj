@@ -34,6 +34,13 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Toiminnot\MenuToiminto.cs" />
+    <Compile Include="Toiminnot\EnsimmainenToiminto.cs" />
+    <Compile Include="Toiminnot\ToinenToiminto.cs" />
+    <Compile Include="Toiminnot\KolmasToiminto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Toiminnot\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

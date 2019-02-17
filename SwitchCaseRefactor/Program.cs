@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SwitchCaseRefactor.Toiminnot;
 
 namespace SwitchCaseRefactor
 {
@@ -7,73 +10,43 @@ namespace SwitchCaseRefactor
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Anna komento ja valitse kuka olet? Kirjoita numero\n1. Asiakas\n2. Kauppias\n0. Lopetus\n");
+            List<MenuToiminto> toiminnot = new List<MenuToiminto>();
+            toiminnot.Add(new EnsimmainenToiminto());
+            toiminnot.Add(new ToinenToiminto());
+            toiminnot.Add(new KolmasToiminto());
 
-            string valinta = Console.ReadLine();
-
-            switch (valinta)
+            // Pääohjelman toistolauseke
+            bool toistaOhjelmaa = true;
+            do
             {
-                case "1": 
-                    Console.Clear();
-                    Console.WriteLine("Valinta 01");
+                TulostaToiminnot(toiminnot);
 
-                    while (!valinta.StartsWith("0", StringComparison.Ordinal))
-                    {
-                        Console.WriteLine("Anna komento 1 tai 2. Muu komento poistuu ohjelmasta\n");
-                        valinta = Console.ReadLine();
-                        bool poistu = false;
+                string kayttajanSyote = Console.ReadLine();
 
-                        switch (valinta) 
-                        {
-                            case "1": 
-                                Console.WriteLine("Valinta 01.01");
-                                break;
-                            case "2":
-                                Console.WriteLine("Valinta 01.02");
-                                break;
-                            default:
-                                Console.WriteLine("Poistuttu 01");
-                                poistu = true;
-                                break;
-                        }
+                MenuToiminto loytynytToiminto = toiminnot.FirstOrDefault(t => t.Komento.Equals(kayttajanSyote));
 
-                        if(poistu)
-                        {
-                            break;
-                        }
-                    }
-                    break;
-                case "2": 
-                    Console.WriteLine("Valinta 02");
+                if (loytynytToiminto != null)
+                {
+                    loytynytToiminto.Suorita();
+                }
+                else
+                {
+                    Console.WriteLine("Komentoa ei löytynyt.");
+                    toistaOhjelmaa = false;
+                }
+            } while (toistaOhjelmaa);
 
-                    while (!valinta.StartsWith("0", StringComparison.Ordinal))
-                    {
-                        Console.WriteLine("Anna komento 1. Muu komento poistuu ohjelmasta\n");
-                        valinta = Console.ReadLine();
-                        bool poistu = false;
-
-                        switch (valinta)
-                        {
-                            case "1":
-                                Console.WriteLine("Valinta 02.01");
-                                break;
-                            default:
-                                Console.WriteLine("Poistuttu 02");
-                                poistu = true;
-                                break;
-                        }
-
-                        if (poistu)
-                        {
-                            break;
-                        }
-                    }
-                    break;
-                default:
-                    Console.WriteLine("Poistuttu pääohjelmasta");
-                    break;
-            }
         }
 
+        private static void TulostaToiminnot(List<MenuToiminto> toiminnot)
+        {
+            Console.Clear();
+            Console.WriteLine("Valitse komento antamalla haluttu komento:\n");
+            Console.WriteLine("Komento\t\tKuvaus");
+            foreach (MenuToiminto toiminto in toiminnot)
+            {
+                Console.WriteLine($"{toiminto.Komento}\t\t{toiminto.KomennonKuvaus}");
+            }
+        }
     }
 }
