@@ -1,4 +1,6 @@
-﻿namespace SwitchCaseRefactor.Toiminnot
+﻿using System;
+
+namespace SwitchCaseRefactor.Toiminnot
 {
     public abstract class MenuToiminto
     {
@@ -6,5 +8,11 @@
         public string KomennonKuvaus { get; set; }
 
         public abstract void Suorita();
+
+
+        public void TulostaOhje()
+        {
+            Console.WriteLine("");
+        }
     }
 }

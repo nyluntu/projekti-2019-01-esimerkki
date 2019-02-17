@@ -1,4 +1,6 @@
 ﻿using System;
+using SwitchCaseRefactor.Asiakas;
+
 namespace SwitchCaseRefactor.Toiminnot
 {
     public class EnsimmainenToiminto : MenuToiminto
@@ -18,8 +20,8 @@ namespace SwitchCaseRefactor.Toiminnot
 
             while (!valinta.StartsWith("0", StringComparison.Ordinal))
             {
-                Console.WriteLine("Anna komento 1 tai 2. Muu komento poistuu ohjelmasta\n");
-
+                Console.WriteLine("Anna komento 1 tai 2. Muu komento poistuu ohjelmasta\\n");
+ 
                 valinta = Console.ReadLine();
                 bool poistu = false;
 
@@ -27,32 +29,12 @@ namespace SwitchCaseRefactor.Toiminnot
                 {
                     case "1":
                         Console.WriteLine("Valinta 01.01");
-                        string kadunnimi;
-                        string postinumero;
-                        string postitoimipaikka;
 
-                        do
-                        {
-                            Console.Write("Anna kadunnimi: ");
-                            // Pvm = int.Parse(Console.ReadLine());
-                            kadunnimi = Console.ReadLine();
-                        } while (kadunnimi == "");
+                        KysyPostiosoite kysyPostiosoite = new KysyPostiosoite();
+                        Postiosoite osoite = kysyPostiosoite.Kysy(); 
 
-                        do
-                        {
-                            Console.Write("Anna postinumero: ");
-                            postinumero = Console.ReadLine();
-                        } while (postinumero == "");
-
-                        do
-                        {
-                            Console.Write("Anna postitoimipaikka: ");
-                            postitoimipaikka = Console.ReadLine();
-                        } while (postitoimipaikka == "");
-
-                        Console.WriteLine(kadunnimi);
-                        Console.WriteLine(postinumero);
-                        Console.WriteLine(postitoimipaikka);
+                        TulostaPostiosoite tulostaja = new TulostaPostiosoite();
+                        tulostaja.Tulosta(osoite);
 
                         break;
                     case "2":

@@ -38,9 +38,13 @@
     <Compile Include="Toiminnot\EnsimmainenToiminto.cs" />
     <Compile Include="Toiminnot\ToinenToiminto.cs" />
     <Compile Include="Toiminnot\KolmasToiminto.cs" />
+    <Compile Include="Asiakas\Postiosoite.cs" />
+    <Compile Include="Asiakas\KysyPostiosoite.cs" />
+    <Compile Include="Asiakas\TulostaPostiosoite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Toiminnot\" />
+    <Folder Include="Asiakas\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
